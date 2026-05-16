@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Ti 💖</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ffb3c7,#ffdbe6,#fff0f5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* PANTALLA CONTRASEÑA */
+
+.password-screen{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,#ff8fb1,#ffc2d1);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+}
+
+.password-screen h1{
+    color:#b3003c;
+    font-size:55px;
+    margin-bottom:20px;
+    font-family:'Great Vibes', cursive;
+    font-weight:normal;
+    text-shadow:0 0 12px rgba(255,255,255,0.8);
+}
+
+.password-screen p{
+    color:#7a1c46;
+    margin-bottom:20px;
+    font-size:30px;
+    font-family:'Great Vibes', cursive;
+}
+
+.password-screen input{
+    padding:15px;
+    border:none;
+    border-radius:20px;
+    width:260px;
+    text-align:center;
+    font-size:16px;
+    outline:none;
+}
+
+.password-screen button{
+    margin-top:15px;
+    border:none;
+    padding:13px 25px;
+    border-radius:25px;
+    background:white;
+    color:#ff4f81;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.password-screen button:hover{
+    transform:scale(1.07);
+}
+.boton-carta{
+    margin-top:10px;
+}
+
+.cerrar{
+    margin-top:20px;
+    background:#ff8db3;
+    display:none;
+}
+
+/* CONTENIDO */
+
+.container{
+    width:420px;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(15px);
+    border-radius:35px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+    display:none;
+    animation:aparecer 1s;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* FOTO */
+
+img{
+    width:310px;
+    height:240px;
+    border-radius:25px;
+    object-fit:cover;
+    box-shadow:0 0 25px rgba(255,255,255,0.9);
+    margin-bottom:20px;
+}
+
+/* TITULO */
+
+h2{
+    color:#b3003c;
+    font-size:52px;
+    margin-bottom:10px;
+    font-family:'Great Vibes', cursive;
+    font-weight:normal;
+    text-shadow:0 0 12px rgba(255,255,255,0.7);
+}
+.frase,
+.carta{
+    font-family:'Great Vibes', cursive;
+}
+
+.frase{
+    color:#7a1c46;
+    font-size:34px;
+    font-weight:normal;
+    margin-bottom:25px;
+    text-shadow:0 0 8px rgba(255,255,255,0.5);
+}
+
+/* SOBRE */
+
+.sobre{
+    width:190px;
+    height:130px;
+    background:#ff6f9f;
+    margin:auto;
+    position:relative;
+    border-radius:15px;
+    cursor:pointer;
+    overflow:visible;
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+.tapa{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ff8db3;
+    clip-path:polygon(0 0, 50% 55%, 100% 0);
+    transform-origin:top;
+    transition:1s;
+    z-index:3;
+}
+
+/* CARTA GRANDE */
+
+.carta{
+    position:absolute;
+    width:360px;
+    height:420px;
+    background:#fffafc;
+    left:-50px;
+    top:-290px;
+    border-radius:25px;
+    padding:35px;
+    color:#5e2842;
+    font-size:18px;
+    line-height:1.9;
+    overflow-y:auto;
+    overflow-x:hidden;
+    transform:translateY(120%);
+    transition:1s;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    border:5px dashed #ffb0c8;
+    z-index:10;
+}
+
+/* CUANDO SE ABRE */
+
+.sobre.abierto .tapa{
+    transform:rotateX(180deg);
+    opacity:0;
+}
+
+.sobre.abierto .carta{
+    transform:translateY(0);
+}
+
+/* CORAZONES */
+
+.heart{
+    position:absolute;
+    bottom:-20px;
+    animation:subir linear infinite;
+    color:white;
+}
+
+@keyframes subir{
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+/* BRILLOS */
+
+.glow{
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:rgba(255,255,255,0.3);
+    border-radius:50%;
+    filter:blur(100px);
+}
+
+.glow1{
+    top:-100px;
+    left:-100px;
+}
+
+.glow2{
+    bottom:-100px;
+    right:-100px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<!-- CONTRASEÑA -->
+
+<div class="password-screen" id="passwordScreen">
+
+    <h1>❤️ Solo Tú ❤️</h1>
+
+    <p>Ingresa nuestra fecha especial ✨</p>
+
+    <input type="password" id="password" placeholder="......">
+
+    <button onclick="verificarPassword()">
+        Entrar 💌
+    </button>
+
+</div>
+
+<!-- CONTENIDO -->
+
+<div class="container" id="contenido">
+
+    <img src="foto.jpg">
+
+    <h2>🧸 Mi Persona Favorita 🧸</h2>
+
+    <p class="frase">
+        Contigo todo se siente más bonito 
+    </p>
+
+    <button class="boton-carta" onclick="abrirCarta()">
+    💌 Abrir cartita
+</button>
+
+<div class="sobre" id="sobre">
+
+        <div class="tapa"></div>
+
+        <div class="carta" id="carta">
+
+    <div id="textoCarta"></div>
+
+    <button class="cerrar" id="botonCerrar" onclick="cerrarCarta()">
+    🔙 Regresar
+</button>
+
+</div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* CONTRASEÑA */
+
+function verificarPassword(){
+
+    const password = document.getElementById("password").value;
+
+    if(password === "130426"){
+
+    document.getElementById("passwordScreen").style.display = "none";
+
+    document.getElementById("contenido").style.display = "block";
+
+    document.getElementById("musica").play();
+
+}else{
+
+        alert("Esa no es nuestra fecha especial 😔");
+
+    }
+
+}
+
+/* TEXTO CARTA */
+
+const mensaje = `
+🧸💌
+
+Miiii amoooor gracias por existir y por hacer mis días muchísimo más bonitos.
+
+Si volviera a empezar mil veces,
+te elegiría siempre siempre siepre a ti. 💖
+
+Me alegra muchísimo que Dios te haya puesto en mi camino. ✨
+
+Nunca imaginé que llegaría a amarte tanto como te amo ahora, pero aquí estoy, completamente enamorada de ti. 💖
+
+Mi corazón se siente tan feliz cuando está contigo, cuando te escucha, cuando te abraza, amo tus abrazos y cuando simplemente coincide contigo. 🥹
+
+TE AMOOOOOO DEMASIADOOOOOOO. 💗
+
+Amo cada parte de ti,
+tu sonrisa,
+tu forma de ser,
+tu voz,
+tus ojitos preciosos,
+y hasta las pequeñas cosas que quizás ni tú notas. ✨
+
+Todavía no encuentro las palabras exactas para describir este amor tan inmenso que siento por ti, pero sí quiero que siempre recuerdes algo,
+
+Siempre voy a estar para ti, incluso en los días difíciles, incluso cuando no me necesites… porque amarte también significa acompañarte. 🫶
+
+Estoy muy orgullosa de ti y de la personita tan increíble que eres. 💗
+
+Gracias por existir, amorcito hermoso. 
+
+Con muchísimo amor,
+la niña que más te ama 💖
+
+`;
+
+let index = 0;
+
+function escribirCarta(){
+
+    if(index < mensaje.length){
+
+    document.getElementById("textoCarta").innerHTML += mensaje.charAt(index);
+
+    index++;
+
+    setTimeout(escribirCarta,40);
+
+}else{
+
+    document.getElementById("botonCerrar").style.display = "inline-block";
+
+}
+
+}
+
+/* ABRIR SOBRE */
+
+function abrirCarta(){
+
+    document.getElementById("sobre").classList.add("abierto");
+
+    if(index === 0){
+        escribirCarta();
+    }
+
+}
+function cerrarCarta(){
+
+    document.getElementById("sobre").classList.remove("abierto");
+
+}
+/* CORAZONES */
+
+function crearCorazon(){
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+
+}
+
+setInterval(crearCorazon,300);
+
+</script>
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
